@@ -5,7 +5,10 @@ export default class Document extends NextDocument {
   render() {
     return (
       <Html>
-        <Head />
+        <Head>
+          <link rel="preconnect" href="https://p.typekit.net"></link>
+          <link rel="stylesheet" href="https://use.typekit.net/fgi7gbc.css"></link>
+        </Head>
         <body>
           {/* Make Color mode to persists when you refresh the page. */}
           <ColorModeScript />
