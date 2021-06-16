@@ -4,9 +4,9 @@ export const Button = (props) => (
 	<Box
 		{...props}
 		as="button"
-		height={props.size === "big" ? "5.37rem" : "4.18rem"}
+		height={props.size === "big" ? "5.37rem" : "3.78rem"}
 		transition="all 0.2s cubic-bezier(.08,.52,.52,1)"
-		px={4}
+		px={8}
 		borderRadius="1rem"
 		fontSize={props.size === "big" ? "2.25rem" : "1.5rem"}
 		fontWeight="bold"
