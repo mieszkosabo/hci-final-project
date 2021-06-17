@@ -1,6 +1,6 @@
 import { Box, BoxProps, Flex, Grid, GridItem, Spacer } from "@chakra-ui/layout";
 import { useRouter } from "next/dist/client/router";
-import Image from "next/Image";
+import Image from "next/image";
 import { Button } from "../buttons/Button";
 import { Date } from "../Date";
 import { Player } from "../Player";
