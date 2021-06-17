@@ -2,7 +2,6 @@ import { Box } from "@chakra-ui/layout";
 
 export const Button = (props) => (
 	<Box
-		{...props}
 		as="button"
 		height={props.size === "big" ? "5.37rem" : "3.78rem"}
 		transition="all 0.2s cubic-bezier(.08,.52,.52,1)"
@@ -23,5 +22,6 @@ export const Button = (props) => (
     	boxShadow:
       	"0 0 1px 2px rgba(88, 144, 255, .75), 0 1px 1px rgba(0, 0, 0, .15)",
   	}}
+		{...props}
 	/>
 )

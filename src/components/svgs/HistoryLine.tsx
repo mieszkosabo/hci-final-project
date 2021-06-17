@@ -4,7 +4,7 @@ function HistoryLine(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
 			width={21}
-			height={1080}
+			height={1380}
 			viewBox="0 0 21 1080"
       preserveAspectRatio="none"
       fill="none"
