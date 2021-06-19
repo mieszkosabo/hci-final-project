@@ -13,6 +13,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Slide } from '@chakra-ui/transition';
 import { forwardRef } from '@chakra-ui/system';
 import {useScroll} from 'react-use';
+import { TitlePage } from '../components/TitlePage';
 
 const epochs = [
   Antiquity,
@@ -27,10 +28,22 @@ const epochs = [
 const Section = forwardRef((props, ref) => <Box ref={ref} sx={{ scrollSnapAlign: 'start', width: '100%', 'top': 0 }} {...props} />)
 export const NAVBAR_HEIGHT = "50px";
 
+const scrollTo = (ref) => ref.current.scrollIntoView({ behavior: 'smooth'});
+
 const Index = () => {
   const [isNavOpened, setIsNavOpened] = useState(false);
   const ref = useRef(null);
   const {y} = useScroll(ref);
+
+  const titleRef = useRef(null);
+  const anitqRef = useRef(null);
+  const medievalRef = useRef(null);
+  const renesansRef = useRef(null);
+  const baroqueRef = useRef(null);
+  const classRef = useRef(null);
+  const romaRef = useRef(null);
+  const contRef = useRef(null);
+
   return (
     <>
     <Slide direction="top" in={isNavOpened || y < 50}>
@@ -46,31 +59,63 @@ const Index = () => {
         </Box>
       </Slide>
       <Box bg="transparent" w="full" h="100px" position="fixed" top="0" onMouseEnter={() => setIsNavOpened(true)} onMouseLeave={() => setIsNavOpened(false)}/>
+
     <Box ref={ref} sx={{ overflowY: 'scroll', scrollSnapType: 'y mandatory', height: '100vh', msScrollSnapPointsY: 'repeat(100vh)'}}>
       
-      <Section >
-        <Flex bg="linear-gradient(180deg, #000000 0%, #0D0D0D 100%)" direction="column" align="center" pt={12} pb={8} height="100vh">
-            <H1 mt={NAVBAR_HEIGHT}>Historia</H1>
-            <H1>Muzyki</H1>
-            <Flex mt={8}>
-                <Button bg="roseWhite" color="black" size="small">Rozpocznij podróż!</Button>
-            </Flex>
-            <Spacer grow />
-            <Flex justify="flex-end">
-              <Box maxWidth="50%">
-                <H3 textAlign="center">“Studiowanie historii muzyki poparte bezpośrednim słuchaniem arcydzieł różnych epok  wyleczy cię najszybciej z zarozumiałości i próżności”</H3>
-                <H3 textAlign="center" mt={4}>~ R.Schumann</H3>
-              </Box>
-            </Flex>
-        </Flex>
-    </Section>
-    {
-      epochs.map((Epoch, i) => (
-        <Section key={i}>
-          <Epoch />
+        <Section ref={titleRef}>
+            <TitlePage onClick={() => scrollTo(anitqRef)}/>
         </Section>
-      ))
-    }
+
+        <Section ref={anitqRef}>
+            <Antiquity 
+             onPrevEpoch={() => scrollTo(titleRef)} 
+             onNextEpoch={() => scrollTo(medievalRef)}
+            />
+        </Section>
+
+        <Section ref={medievalRef}>
+            <Medieval 
+             onPrevEpoch={() => scrollTo(anitqRef)} 
+             onNextEpoch={() => scrollTo(renesansRef)}
+            />
+        </Section>
+
+        <Section ref={renesansRef}>
+            <Renesans 
+             onPrevEpoch={() => scrollTo(medievalRef)} 
+             onNextEpoch={() => scrollTo(baroqueRef)}
+            />
+        </Section>
+
+        <Section ref={baroqueRef}>
+            <Baroque 
+             onPrevEpoch={() => scrollTo(renesansRef)} 
+             onNextEpoch={() => scrollTo(classRef)}
+            />
+        </Section>
+
+        <Section ref={classRef}>
+            <Classicism 
+             onPrevEpoch={() => scrollTo(baroqueRef)} 
+             onNextEpoch={() => scrollTo(romaRef)}
+            />
+        </Section>
+
+        <Section ref={romaRef}>
+            <Romantism 
+             onPrevEpoch={() => scrollTo(classRef)} 
+             onNextEpoch={() => scrollTo(contRef)}
+            />
+        </Section>
+
+        <Section ref={contRef}>      
+            <Contemporary 
+             onPrevEpoch={() => scrollTo(romaRef)} 
+             onNextEpoch={() => scrollTo(titleRef)}
+             isLast
+            />
+        </Section>
+
     </Box>
     </>
   )

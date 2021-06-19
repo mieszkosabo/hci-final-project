@@ -22,7 +22,6 @@ export default function Antiquity(props): JSX.Element {
         accent: "#D1A160",
         white: theme.colors.white
       }}
-      nextEpoch="medieval"
       {...props}
     />
   )

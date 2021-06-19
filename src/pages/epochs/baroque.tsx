@@ -2,7 +2,7 @@ const song = require('../../music/song.mp3');
 import { Epoch } from "../../components/Epoch/Epoch";
 import { useTheme } from "@chakra-ui/system";
 
-export default function Baroque(): JSX.Element {
+export default function Baroque(props): JSX.Element {
   const theme = useTheme();
   return (
     <Epoch
@@ -22,7 +22,7 @@ export default function Baroque(): JSX.Element {
         accent: "#B25E10",
         white: theme.colors.white
       }}
-			nextEpoch={null}
+      {...props}
     />
   )
 }

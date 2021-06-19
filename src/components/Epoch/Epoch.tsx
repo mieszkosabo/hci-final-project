@@ -1,10 +1,13 @@
 import { Box, BoxProps, Flex, Grid, GridItem, Spacer } from "@chakra-ui/layout";
 import { useRouter } from "next/dist/client/router";
 import Image from "next/image";
+import React from "react";
 import { NAVBAR_HEIGHT } from "../../pages";
 import { Date } from "../Date";
 import { Player } from "../Player";
 import HistoryLine from "../svgs/HistoryLine";
+import { Home } from "../svgs/Home";
+import { NavTriangle } from "../svgs/NavTriangle";
 import { H1 } from "../typography/H1";
 import { H3 } from "../typography/H3";
 import { Paragraph } from "../typography/Paragraph";
@@ -33,7 +36,9 @@ interface EpochProps extends BoxProps {
       accent: string;
       white: string;
   }
-  nextEpoch: string | null;
+  onNextEpoch: () => void;
+  onPrevEpoch: () => void;
+  isLast?: boolean;
 }
 
 export const Epoch = ({
@@ -44,7 +49,9 @@ export const Epoch = ({
   paragraphs,
   image,
   colors,
-  nextEpoch,
+  onNextEpoch,
+  onPrevEpoch,
+  isLast,
   ...props
 }: EpochProps) => {
   return (
@@ -79,19 +86,30 @@ export const Epoch = ({
 
       <GridItem rowSpan={2} colStart={3}>
         <Flex direction="column" h="full" justify="flex-start" pt={10} pr={8} pb={8}>
+          <Flex justify="space-between" align="baseline">
           <Date mt={NAVBAR_HEIGHT} year={date.year} suffix={date.suffix} accentColor={colors.accent}/>
+              <NavTriangle isUpward onClick={onPrevEpoch} />
+          </Flex>
 
           <Player my={8} title={music.title} author={music.author} song={music.song} frontColor={colors.white} backColor={colors.primary} />
           {
             paragraphs.map((text, i) => (
-              <>
-              <Paragraph key={i}>
+              <React.Fragment key={i}>
+              <Paragraph>
                   {text}
               </Paragraph>
               { i < paragraphs.length - 1 && <br />}
-              </>
+              </React.Fragment>
             ))
           }
+          <Spacer grow={1} />
+          <Flex justify="flex-end">
+              {
+                isLast
+                ? <Home onClick={onNextEpoch} pb={8}/>
+                : <NavTriangle pt={8} isUpward={false} onClick={onNextEpoch} />
+              }
+          </Flex>
         </Flex>
       </GridItem>
     </Grid>
