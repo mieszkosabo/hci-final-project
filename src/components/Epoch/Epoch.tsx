@@ -1,4 +1,5 @@
 import { Box, BoxProps, Flex, Grid, GridItem, Spacer } from "@chakra-ui/layout";
+import { useTheme } from "@chakra-ui/system";
 import { useRouter } from "next/dist/client/router";
 import Image from "next/image";
 import React from "react";
@@ -54,6 +55,7 @@ export const Epoch = ({
   isLast,
   ...props
 }: EpochProps) => {
+  const theme = useTheme();
   return (
       <Grid
         templateRows="auto 1fr"
@@ -106,7 +108,7 @@ export const Epoch = ({
           <Flex justify="flex-end">
               {
                 isLast
-                ? <Home onClick={onNextEpoch} pb={8}/>
+                ? <Home onClick={onNextEpoch} pb={8} fill={theme.colors.roseWhite}/>
                 : <NavTriangle pt={8} isUpward={false} onClick={onNextEpoch} />
               }
           </Flex>

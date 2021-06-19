@@ -12,7 +12,7 @@ export const HomeIcon = (props: React.SVGProps<SVGSVGElement>) => {
     >
       <path
         d="M30 58V37.53h15V58h18.75V30.706H75L37.5 0 0 30.706h11.25V58H30z"
-        fill="#fff"
+        fill={props.fill}
       />
     </svg>
   );
@@ -20,6 +20,6 @@ export const HomeIcon = (props: React.SVGProps<SVGSVGElement>) => {
 
 export const Home = (props) => (
 	<Box {...props}>
-		<HomeIcon />
+		<HomeIcon fill={props.fill} />
 	</Box>
 )
