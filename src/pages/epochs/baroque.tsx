@@ -8,8 +8,8 @@ export default function Baroque(): JSX.Element {
     <Epoch
       title="Barok"
       catchPhrase="Chwytliwe zdanie, które określa daną epokę"
-      date={{ year: 1600, suffix: "r. pierwsza opera"}}
-      music={{ title: "J.S Bach Tocatta i fuga d-moll", song: song}}
+      date={{ year: "1600 r.", suffix: "pierwsza opera"}}
+      music={{ author: "J.S. Bach", title: "Tocatta i fuga d-moll", song: song}}
       paragraphs={[
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque et at egestas viverra libero at massa elit amet.",
         "Sit non vel natoque in. Sollicitudin sed velit pretium dictum massa egestas volutpat imperdiet sagittis. Nullam semper non vitae urna tincidunt sagittis nunc lorem elit.",

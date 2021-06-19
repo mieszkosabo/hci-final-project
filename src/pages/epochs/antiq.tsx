@@ -2,13 +2,13 @@ const song = require('../../music/song.mp3');
 import { Epoch } from "../../components/Epoch/Epoch";
 import { useTheme } from "@chakra-ui/system";
 
-export default function Antiquity(): JSX.Element {
+export default function Antiquity(props): JSX.Element {
   const theme = useTheme();
   return (
     <Epoch
       title="Starożytność"
       catchPhrase="Chwytliwe zdanie, które określa daną epokę"
-      date={{ year: 12000, suffix: "p.n.e"}}
+      date={{ year: "12000 p.n.e" }}
       music={{ title: "Epitafium Seikilosa", song: song}}
       paragraphs={[
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque et at egestas viverra libero at massa elit amet.",
@@ -23,6 +23,7 @@ export default function Antiquity(): JSX.Element {
         white: theme.colors.white
       }}
       nextEpoch="medieval"
+      {...props}
     />
   )
 }

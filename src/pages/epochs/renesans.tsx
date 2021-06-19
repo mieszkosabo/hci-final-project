@@ -8,8 +8,8 @@ export default function Renesans(): JSX.Element {
     <Epoch
       title="Renesans"
       catchPhrase="Chwytliwe zdanie, które określa daną epokę"
-      date={{ year: 1450, suffix: "r. początek druku"}}
-      music={{ title: "M.Gomułka Nieście chwałę mocarzom", song: song}}
+      date={{ year: "1450 r.", suffix: "początek druku"}}
+      music={{ author: "M. Gomułka", title: "Nieście chwałę mocarzom", song: song}}
       paragraphs={[
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque et at egestas viverra libero at massa elit amet.",
         "Sit non vel natoque in. Sollicitudin sed velit pretium dictum massa egestas volutpat imperdiet sagittis. Nullam semper non vitae urna tincidunt sagittis nunc lorem elit.",

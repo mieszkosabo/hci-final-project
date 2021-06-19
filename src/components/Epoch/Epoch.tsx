@@ -1,7 +1,7 @@
 import { Box, BoxProps, Flex, Grid, GridItem, Spacer } from "@chakra-ui/layout";
 import { useRouter } from "next/dist/client/router";
 import Image from "next/image";
-import { Button } from "../buttons/Button";
+import { NAVBAR_HEIGHT } from "../../pages";
 import { Date } from "../Date";
 import { Player } from "../Player";
 import HistoryLine from "../svgs/HistoryLine";
@@ -14,11 +14,12 @@ interface EpochProps extends BoxProps {
   title: string;
   catchPhrase: string;
   date: {
-    year: number;
-    suffix: string;
+    year: string;
+    suffix?: string;
   }
   music: {
     title: string;
+    author?: string;
     song: Song;
   }
   paragraphs: string[];
@@ -44,16 +45,17 @@ export const Epoch = ({
   image,
   colors,
   nextEpoch,
+  ...props
 }: EpochProps) => {
-  const router = useRouter();
   return (
       <Grid
         templateRows="auto 1fr"
         templateColumns="1fr auto 1fr"
-        bg={colors.background} 
+        bg={colors.background}
+        {...props}
       >
       <GridItem rowSpan={1} colStart={1} p={8}>
-        <H1>{title}</H1>
+        <H1 mt={NAVBAR_HEIGHT}>{title}</H1>
         <H3 mt={8}>{catchPhrase}</H3>
       </GridItem>
 
@@ -77,9 +79,9 @@ export const Epoch = ({
 
       <GridItem rowSpan={2} colStart={3}>
         <Flex direction="column" h="full" justify="flex-start" pt={10} pr={8} pb={8}>
-          <Date year={date.year} suffix={date.suffix} accentColor={colors.accent}/>
+          <Date mt={NAVBAR_HEIGHT} year={date.year} suffix={date.suffix} accentColor={colors.accent}/>
 
-          <Player my={8} title={music.title} song={music.song} frontColor={colors.white} backColor={colors.primary} />
+          <Player my={8} title={music.title} author={music.author} song={music.song} frontColor={colors.white} backColor={colors.primary} />
           {
             paragraphs.map((text, i) => (
               <>

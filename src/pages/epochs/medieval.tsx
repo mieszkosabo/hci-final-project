@@ -8,8 +8,8 @@ export default function Medieval(): JSX.Element {
     <Epoch
       title="Średniowiecze"
       catchPhrase="Chwytliwe zdanie, które określa daną epokę"
-      date={{ year: 476, suffix: "p.n.e"}}
-      music={{ title: "Bogurodzica - Ktośtam", song: song}}
+      date={{ year: "476 r.", suffix: "upadek Rzymu"}}
+      music={{ title: "Bogurodzica", song: song}}
       paragraphs={[
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque et at egestas viverra libero at massa elit amet.",
         "Sit non vel natoque in. Sollicitudin sed velit pretium dictum massa egestas volutpat imperdiet sagittis. Nullam semper non vitae urna tincidunt sagittis nunc lorem elit.",

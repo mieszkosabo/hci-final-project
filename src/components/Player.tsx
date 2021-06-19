@@ -5,7 +5,7 @@ import PlayIcon from "../icons/Play";
 import { H3 } from "./typography/H3";
 
 
-export const Player = ({ song, title, frontColor, backColor, ...props }) => {
+export const Player = ({ song, title, author, frontColor, backColor, ...props }) => {
 	const [play, { pause, isPlaying }] = useSound(song);
 
 	return (
@@ -14,7 +14,10 @@ export const Player = ({ song, title, frontColor, backColor, ...props }) => {
 				? <PauseIcon onClick={() => pause()} frontColor={frontColor} backColor={backColor}/>
 				: <PlayIcon  onClick={() => play()} frontColor={frontColor} backColor={backColor}/>
 			}
-			<H3 ml={8}>{title}</H3>
+			<Flex direction="column">
+				{ author && <H3 color={backColor} ml={8}>{author}</H3> }
+				<H3 color={backColor} ml={8}>{title}</H3>
+			</Flex>
 		</Flex>
 	)
 }
